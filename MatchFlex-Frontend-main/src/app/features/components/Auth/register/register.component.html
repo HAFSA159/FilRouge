@@ -1,0 +1,100 @@
+<div class="register-container">
+  <div class="register-box">
+    <h1>Welcome to MatchFlex</h1>
+    <h2 class="pb-5">Create Account</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input
+            type="text"
+            id="firstName"
+            formControlName="firstName"
+            placeholder="John"
+            [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }">
+          <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+            <div *ngIf="f['firstName'].errors?.['required']">First Name is required</div>
+            <div *ngIf="f['firstName'].errors?.['minlength']">First Name must be at least 2 characters</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input
+            type="text"
+            id="lastName"
+            formControlName="lastName"
+            placeholder="Doe"
+            [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }">
+          <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+            <div *ngIf="f['lastName'].errors?.['required']">Last Name is required</div>
+            <div *ngIf="f['lastName'].errors?.['minlength']">Last Name must be at least 2 characters</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="you@example.com"
+          [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+          <div *ngIf="f['email'].errors?.['required']">Email is required</div>
+          <div *ngIf="f['email'].errors?.['email']">Please enter a valid email address</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          formControlName="phone"
+          placeholder="+21267777779"
+          [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }">
+        <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
+          <div *ngIf="f['phone'].errors?.['required']">Phone number is required</div>
+          <div *ngIf="f['phone'].errors?.['pattern']">Please enter a valid phone number</div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+          <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+            <div *ngIf="f['password'].errors?.['required']">Password is required</div>
+            <div *ngIf="f['password'].errors?.['minlength']">Password must be at least 8 characters</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            formControlName="confirmPassword"
+            [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }">
+          <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
+            <div *ngIf="f['confirmPassword'].errors?.['required']">Confirm Password is required</div>
+            <div *ngIf="f['confirmPassword'].errors?.['passwordMismatch']">Passwords must match</div>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="register-button">Create Account</button>
+    </form>
+
+    <div class="login-link">
+      <p>Already have an account? <a routerLink="/login">Sign In</a></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,26 @@
+/* Add any custom styles here if needed */
+/* Most styling is handled by Tailwind classes in the HTML */
+
+/* Animation for mobile menu */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+:host {
+  position: relative;
+  z-index: 50;
+  display: block;
+}
+
+/* Apply animation to mobile menu */
+div[class*="md:hidden absolute"] {
+  animation: slideDown 0.2s ease-out;
+}
+

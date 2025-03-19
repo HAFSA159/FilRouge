@@ -1,0 +1,22 @@
+/* Add these styles for the table and form */
+:host {
+  display: block;
+}
+
+/* Form styles */
+input.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  @apply border-red-500 ring-red-500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  table {
+    @apply text-xs;
+  }
+
+  th, td {
+    @apply px-2 py-2;
+  }
+}
+

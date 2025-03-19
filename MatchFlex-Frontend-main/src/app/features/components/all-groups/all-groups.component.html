@@ -1,0 +1,33 @@
+<div class="py-16 bg-gradient-to-r from-gray-100 via-[#bce1ff] to-gray-100">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div *ngFor="let group of groups" class="w-full overflow-hidden bg-white rounded-xl shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+        <div class="relative p-0">
+          <div class="absolute top-2 right-2 bg-blue-100 text-blue-900 px-3 py-1 rounded-full text-sm font-bold">
+            {{ group.name }}
+          </div>
+          <div class="grid grid-cols-2 gap-2 p-4 bg-gradient-to-br from-blue-500 to-red-700">
+            <div *ngFor="let flag of group.flags" class="flex items-center justify-center bg-amber-100 rounded-lg p-2">
+              <img [src]="'assets/' + flag" [alt]="flag + ' flag'" class="w-16 h-16 object-cover rounded-full">
+            </div>
+          </div>
+        </div>
+        <div class="p-4">
+          <h3 class="text-xl font-semibold text-amber-900 mb-2">{{ group.name }}</h3>
+          <p class="text-amber-700">{{ group.countries.join(', ') }}</p>
+        </div>
+        <div class="flex gap-2 p-4">
+          <button (click)="viewDetails(group.name)" class="flex-1 bg-blue-600 hover:bg-red-800 text-amber-100 font-medium py-2 px-4 rounded-lg transition-colors duration-300">
+            View Details
+          </button>
+          <button (click)="schedule(group.name, group.groupId)" class="flex-1 border border-red-700 text-red-700 hover:bg-red-50 font-medium py-2 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center">
+            Schedule
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

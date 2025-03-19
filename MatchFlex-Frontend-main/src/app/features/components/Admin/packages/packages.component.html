@@ -1,0 +1,75 @@
+<div class="flex min-h-screen">
+  <app-sidebar></app-sidebar>
+  <div class="flex-1 p-8">
+    <!-- Header -->
+    <header class="flex flex-wrap justify-between items-center mb-8">
+      <div class="w-full">
+        <div class="text-sm text-gray-600 mb-2">
+          Pages / Package Management
+        </div>
+        <h1 class="text-2xl font-bold text-slate-800 mr-auto">Package Management</h1>
+      </div>
+    </header>
+
+    <!-- Package List -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div *ngFor="let packageItem of packages" class="package-card bg-white rounded-lg shadow-sm overflow-hidden">
+        <div class="p-6">
+          <h2 class="text-xl font-semibold text-gray-800 mb-2">{{ packageItem.name }}</h2>
+          <p class="text-3xl font-bold text-[#f60033] mb-4">${{ packageItem.price }}<span class="text-sm text-gray-500">/month</span></p>
+          <ul class="feature-list mb-6">
+            <li *ngFor="let feature of packageItem.features" class="flex items-center mb-2">
+              <svg class="w-4 h-4 mr-2 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              {{ feature }}
+            </li>
+          </ul>
+          <button (click)="editPackage(packageItem)" class="w-full bg-[#f60033] text-white py-2 px-4 rounded-md hover:bg-indigo-700 transition duration-300">
+            Edit Package
+          </button>
+        </div>
+      </div>
+
+      <!-- Add New Package Card -->
+      <div class="add-package-card bg-white rounded-lg shadow-sm overflow-hidden border-2 border-dashed border-gray-300 flex items-center justify-center cursor-pointer" (click)="showAddPackageForm()">
+        <div class="text-center p-6">
+          <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+          </svg>
+          <h3 class="text-lg font-semibold text-gray-800">Add New Package</h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Package Form Pop-up -->
+    <div *ngIf="showAddForm" class="modal-overlay flex items-center justify-center">
+      <div class="modal-container bg-white p-8 rounded-lg shadow-xl w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-4">Add New Package</h2>
+        <form [formGroup]="packageForm" (ngSubmit)="onSubmit()">
+          <div class="mb-4">
+            <label for="name" class="block text-gray-700 text-sm font-bold mb-2">Package Name</label>
+            <input type="text" id="name" formControlName="name" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          </div>
+          <div class="mb-4">
+            <label for="price" class="block text-gray-700 text-sm font-bold mb-2">Price</label>
+            <input type="number" id="price" formControlName="price" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          </div>
+          <div class="mb-4">
+            <label for="features" class="block text-gray-700 text-sm font-bold mb-2">Features (comma-separated)</label>
+            <textarea id="features" formControlName="features" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" rows="3"></textarea>
+          </div>
+          <div class="flex items-center justify-between">
+            <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              Add Package
+            </button>
+            <button type="button" (click)="hideAddPackageForm()" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

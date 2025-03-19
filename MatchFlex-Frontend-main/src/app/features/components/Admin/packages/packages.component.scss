@@ -1,0 +1,39 @@
+.package-card {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.feature-list {
+  li {
+    @apply flex items-center mb-2;
+
+    svg {
+      @apply w-4 h-4 mr-2 text-green-500;
+    }
+  }
+}
+
+.add-package-card {
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    @apply border-indigo-500;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.modal-overlay {
+  @apply fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full;
+  z-index: 50;
+}
+
+.modal-container {
+  @apply bg-white p-8 rounded-lg shadow-xl w-full max-w-md;
+  z-index: 51;
+}
+

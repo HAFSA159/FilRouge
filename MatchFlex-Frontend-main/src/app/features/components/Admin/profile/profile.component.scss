@@ -1,0 +1,33 @@
+.profile-header {
+  background-image: linear-gradient(to right, #4a90e2, #5e5ce6);
+}
+
+.profile-picture {
+  border: 4px solid white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  @apply text-xl font-semibold text-gray-800 mb-4;
+}
+
+.info-label {
+  @apply text-sm font-medium text-gray-500;
+}
+
+.info-value {
+  @apply mt-1 text-sm text-gray-900;
+}
+
+.action-button {
+  @apply font-bold py-2 px-4 rounded;
+
+  &.primary {
+    @apply bg-blue-500 text-white hover:bg-blue-600;
+  }
+
+  &.secondary {
+    @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+  }
+}
+
