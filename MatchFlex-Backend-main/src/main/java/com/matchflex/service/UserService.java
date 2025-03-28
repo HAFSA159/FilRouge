@@ -1,5 +1,7 @@
 package com.matchflex.service;
 
+import com.matchflex.dto.LoginDTO;
+import com.matchflex.dto.LoginResponseDto;
 import com.matchflex.dto.UserDTO;
 import com.matchflex.dto.UserRegistrationDto;
 
@@ -16,7 +18,7 @@ public interface UserService {
     List<UserDTO> searchUsersByName(String name);
     boolean isEmailTaken(String email);
     boolean isPhoneNumberTaken(String phoneNumber);
-    UserDTO registerUser(UserRegistrationDto registrationDto);
-
+    UserDTO registerUser(UserDTO registrationDto);
+    LoginResponseDto Login(LoginDTO loginDto);
 }
 

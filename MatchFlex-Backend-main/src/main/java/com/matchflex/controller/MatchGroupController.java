@@ -2,40 +2,58 @@ package com.matchflex.controller;
 
 import com.matchflex.config.JwtTokenProvider;
 import com.matchflex.dto.MatchGroupDTO;
+import com.matchflex.security.JwtService;
 import com.matchflex.service.MatchGroupService;
+import lombok.AllArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/match-groups")
+@AllArgsConstructor
 public class MatchGroupController {
 
+    private static final Logger log = LoggerFactory.getLogger(MatchGroupController.class);
     private final MatchGroupService matchGroupService;
     private final JwtTokenProvider jwtTokenProvider;
+    private final JwtService jwtService;
 
-    @Autowired
-    public MatchGroupController(MatchGroupService matchGroupService, JwtTokenProvider jwtTokenProvider) {
-        this.matchGroupService = matchGroupService;
-        this.jwtTokenProvider = jwtTokenProvider;
-    }
 
-    @GetMapping
-    public ResponseEntity<List<MatchGroupDTO>> getAllGroups() {
-        return ResponseEntity.ok(matchGroupService.getAllGroups());
+
+
+//    @GetMapping
+//    public ResponseEntity<List<MatchGroupDTO>> getAllGroups() {
+//        return ResponseEntity.ok(matchGroupService.getAllGroups());
+//    }
+
+    @PostMapping("/create-groupe")
+    public ResponseEntity<MatchGroupDTO> createGroupe(@RequestBody MatchGroupDTO matchGroupDTO) {
+        return ResponseEntity.ok(matchGroupService.createGroupe(matchGroupDTO));
     }
 
     @GetMapping("/available")
-    public ResponseEntity<List<MatchGroupDTO>> getAvailableGroups() {
+    public ResponseEntity<List<MatchGroupDTO>> getAvailableGroups(@RequestHeader("Authorization") String token) {
         // Renvoie tous les groupes disponibles à l'achat
-        return ResponseEntity.ok(matchGroupService.getAllGroups());
+
+
+        if (token == null || !token.startsWith("Bearer ")) {
+            log.info("edmekdmdelkedmlkmedledlkmdekedmlddmkemkled");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        String bearerToken = token.substring(7);
+        String email = jwtService.extractUsername(bearerToken);
+        return ResponseEntity.ok(matchGroupService.getAllGroups(email));
     }
 
     @GetMapping("/user")
     public ResponseEntity<List<MatchGroupDTO>> getGroupsForCurrentUser(@RequestHeader("Authorization") String token) {
         String bearerToken = token.substring(7);
-        String email = jwtTokenProvider.extractEmail(bearerToken);
+        String email = jwtService.extractUsername(bearerToken);
         return ResponseEntity.ok(matchGroupService.getGroupsByUserEmail(email));
     }
 

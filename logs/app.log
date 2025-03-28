@@ -1,0 +1,184 @@
+2025-03-27T03:10:50.609Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] com.matchflex.SmartBandApplication       : Starting SmartBandApplication using Java 17.0.14 with PID 1406717 (/home/mad-king/projects/FilRouge/MatchFlex-Backend-main/target/classes started by mad-king in /home/mad-king/projects/FilRouge)
+2025-03-27T03:10:50.612Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] com.matchflex.SmartBandApplication       : The following 1 profile is active: "dev"
+2025-03-27T03:10:50.650Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-03-27T03:10:50.651Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-03-27T03:10:51.276Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-03-27T03:10:51.391Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 108 ms. Found 8 JPA repository interfaces.
+2025-03-27T03:10:51.508Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] faultConfiguringBeanFactoryPostProcessor : No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+2025-03-27T03:10:51.515Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] faultConfiguringBeanFactoryPostProcessor : No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+2025-03-27T03:10:52.108Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-03-27T03:10:52.120Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-03-27T03:10:52.121Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.34]
+2025-03-27T03:10:52.153Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-03-27T03:10:52.153Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1502 ms
+2025-03-27T03:10:52.561Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-03-27T03:10:52.581Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-03-27T03:10:52.712Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:matchflexdb user=SA
+2025-03-27T03:10:52.714Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-03-27T03:10:53.580Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-03-27T03:10:53.974Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-03-27T03:10:54.325Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] com.matchflex.config.MqttConfig          : Tentative de connexion au broker MQTT avec client ID: springBootClientTest-8bcff963-d0be-4a35-b902-efd370ce7fa7
+2025-03-27T03:10:54.376Z  WARN 1406717 --- [MatchFlexdb] [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-03-27T03:10:54.390Z  WARN 1406717 --- [MatchFlexdb] [restartedMain] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 74cac609-b69c-49f1-a8d8-03df022ff786
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-03-27T03:10:54.395Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-03-27T03:10:54.516Z DEBUG 1406717 --- [MatchFlexdb] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerMapping : 63 mappings in 'requestMappingHandlerMapping'
+2025-03-27T03:10:54.623Z DEBUG 1406717 --- [MatchFlexdb] [restartedMain] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-03-27T03:10:54.731Z DEBUG 1406717 --- [MatchFlexdb] [restartedMain] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-03-27T03:10:54.767Z DEBUG 1406717 --- [MatchFlexdb] [restartedMain] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 1 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-03-27T03:10:54.800Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:matchflexdb'
+2025-03-27T03:10:54.870Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-03-27T03:10:54.947Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2025-03-27T03:10:54.948Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] o.s.i.channel.PublishSubscribeChannel    : Channel 'MatchFlexdb.errorChannel' has 1 subscriber(s).
+2025-03-27T03:10:54.948Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : started bean '_org.springframework.integration.errorLogger'
+2025-03-27T03:10:54.948Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : Adding {message-handler:handler.serviceActivator} as a subscriber to the 'mqttInputChannel' channel
+2025-03-27T03:10:54.949Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] o.s.integration.channel.DirectChannel    : Channel 'MatchFlexdb.mqttInputChannel' has 1 subscriber(s).
+2025-03-27T03:10:54.949Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] o.s.i.endpoint.EventDrivenConsumer       : started bean 'handler.serviceActivator'
+2025-03-27T03:10:54.962Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] .m.i.MqttPahoMessageDrivenChannelAdapter : started bean 'inbound'; defined in: 'class path resource [com/matchflex/config/MqttConfig.class]'; from source: 'com.matchflex.config.MqttConfig.inbound()'
+2025-03-27T03:10:54.971Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-03-27T03:10:54.979Z  INFO 1406717 --- [MatchFlexdb] [restartedMain] com.matchflex.SmartBandApplication       : Started SmartBandApplication in 4.814 seconds (process running for 5.461)
+2025-03-27T03:11:09.317Z  INFO 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-03-27T03:11:09.318Z  INFO 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-03-27T03:11:09.318Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected StandardServletMultipartResolver
+2025-03-27T03:11:09.318Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected AcceptHeaderLocaleResolver
+2025-03-27T03:11:09.318Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected FixedThemeResolver
+2025-03-27T03:11:09.319Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@79e1ff42
+2025-03-27T03:11:09.319Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Detected org.springframework.web.servlet.support.SessionFlashMapManager@186003e2
+2025-03-27T03:11:09.320Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2025-03-27T03:11:09.320Z  INFO 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-03-27T03:11:09.344Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : GET "/api/match-groups/available", parameters={}
+2025-03-27T03:11:09.345Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.matchflex.controller.MatchGroupController#getAvailableGroups()
+2025-03-27T03:11:09.460Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2025-03-27T03:11:09.461Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2025-03-27T03:11:09.474Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-03-27T03:11:12.244Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/match-groups/user", parameters={}
+2025-03-27T03:11:12.244Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.matchflex.controller.MatchGroupController#getGroupsForCurrentUser(String)
+2025-03-27T03:11:12.246Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-03-27T03:11:12.253Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/match-groups/user", parameters={}
+2025-03-27T03:11:12.254Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.matchflex.controller.MatchGroupController#getGroupsForCurrentUser(String)
+2025-03-27T03:11:12.282Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.matchflex.exception.GlobalExceptionHandler#handleGlobalException(Exception)
+2025-03-27T03:11:12.283Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json]
+2025-03-27T03:11:12.284Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-3] m.m.a.RequestResponseBodyMethodProcessor : Writing ["An unexpected error occurred: JWT strings must contain exactly 2 period characters. Found: 0"]
+2025-03-27T03:11:12.285Z  WARN 1406717 --- [MatchFlexdb] [http-nio-8080-exec-3] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [io.jsonwebtoken.MalformedJwtException: JWT strings must contain exactly 2 period characters. Found: 0]
+2025-03-27T03:11:12.285Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2025-03-27T03:12:08.555Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/match-groups/user", parameters={}
+2025-03-27T03:12:08.556Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.matchflex.controller.MatchGroupController#getGroupsForCurrentUser(String)
+2025-03-27T03:12:08.559Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.matchflex.exception.GlobalExceptionHandler#handleGlobalException(Exception)
+2025-03-27T03:12:08.560Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json]
+2025-03-27T03:12:08.560Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-4] m.m.a.RequestResponseBodyMethodProcessor : Writing ["An unexpected error occurred: JWT strings must contain exactly 2 period characters. Found: 0"]
+2025-03-27T03:12:08.561Z  WARN 1406717 --- [MatchFlexdb] [http-nio-8080-exec-4] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [io.jsonwebtoken.MalformedJwtException: JWT strings must contain exactly 2 period characters. Found: 0]
+2025-03-27T03:12:08.562Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2025-03-27T03:12:11.495Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : GET "/api/match-groups/user", parameters={}
+2025-03-27T03:12:11.495Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-5] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.matchflex.controller.MatchGroupController#getGroupsForCurrentUser(String)
+2025-03-27T03:12:11.498Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.matchflex.exception.GlobalExceptionHandler#handleGlobalException(Exception)
+2025-03-27T03:12:11.498Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json]
+2025-03-27T03:12:11.498Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-5] m.m.a.RequestResponseBodyMethodProcessor : Writing ["An unexpected error occurred: JWT strings must contain exactly 2 period characters. Found: 0"]
+2025-03-27T03:12:11.499Z  WARN 1406717 --- [MatchFlexdb] [http-nio-8080-exec-5] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [io.jsonwebtoken.MalformedJwtException: JWT strings must contain exactly 2 period characters. Found: 0]
+2025-03-27T03:12:11.500Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-5] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2025-03-27T03:13:04.522Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : GET "/api/match-groups/available", parameters={}
+2025-03-27T03:13:04.523Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-6] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.matchflex.controller.MatchGroupController#getAvailableGroups()
+2025-03-27T03:13:04.527Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2025-03-27T03:13:04.527Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-6] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2025-03-27T03:13:04.528Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-6] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-03-27T03:13:05.513Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : GET "/api/match-groups/user", parameters={}
+2025-03-27T03:13:05.513Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-7] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.matchflex.controller.MatchGroupController#getGroupsForCurrentUser(String)
+2025-03-27T03:13:05.516Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.matchflex.exception.GlobalExceptionHandler#handleGlobalException(Exception)
+2025-03-27T03:13:05.517Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json]
+2025-03-27T03:13:05.517Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-7] m.m.a.RequestResponseBodyMethodProcessor : Writing ["An unexpected error occurred: JWT strings must contain exactly 2 period characters. Found: 0"]
+2025-03-27T03:13:05.518Z  WARN 1406717 --- [MatchFlexdb] [http-nio-8080-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [io.jsonwebtoken.MalformedJwtException: JWT strings must contain exactly 2 period characters. Found: 0]
+2025-03-27T03:13:05.518Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-7] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2025-03-27T03:18:24.555Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : GET "/api/match-groups/user", parameters={}
+2025-03-27T03:18:24.556Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-8] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.matchflex.controller.MatchGroupController#getGroupsForCurrentUser(String)
+2025-03-27T03:18:24.557Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.matchflex.exception.GlobalExceptionHandler#handleGlobalException(Exception)
+2025-03-27T03:18:24.558Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json]
+2025-03-27T03:18:24.558Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-8] m.m.a.RequestResponseBodyMethodProcessor : Writing ["An unexpected error occurred: JWT strings must contain exactly 2 period characters. Found: 0"]
+2025-03-27T03:18:24.559Z  WARN 1406717 --- [MatchFlexdb] [http-nio-8080-exec-8] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [io.jsonwebtoken.MalformedJwtException: JWT strings must contain exactly 2 period characters. Found: 0]
+2025-03-27T03:18:24.560Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-8] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2025-03-27T03:18:32.388Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : GET "/api/match-groups/user", parameters={}
+2025-03-27T03:18:32.388Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-9] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.matchflex.controller.MatchGroupController#getGroupsForCurrentUser(String)
+2025-03-27T03:18:32.390Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.matchflex.exception.GlobalExceptionHandler#handleGlobalException(Exception)
+2025-03-27T03:18:32.391Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json]
+2025-03-27T03:18:32.391Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-9] m.m.a.RequestResponseBodyMethodProcessor : Writing ["An unexpected error occurred: JWT strings must contain exactly 2 period characters. Found: 0"]
+2025-03-27T03:18:32.392Z  WARN 1406717 --- [MatchFlexdb] [http-nio-8080-exec-9] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [io.jsonwebtoken.MalformedJwtException: JWT strings must contain exactly 2 period characters. Found: 0]
+2025-03-27T03:18:32.392Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-9] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2025-03-27T03:18:37.226Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : GET "/api/match-groups/user", parameters={}
+2025-03-27T03:18:37.226Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-10] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.matchflex.controller.MatchGroupController#getGroupsForCurrentUser(String)
+2025-03-27T03:18:37.229Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Using @ExceptionHandler com.matchflex.exception.GlobalExceptionHandler#handleGlobalException(Exception)
+2025-03-27T03:18:37.230Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [application/json, text/plain, */*] and supported [text/plain, */*, application/json, application/*+json]
+2025-03-27T03:18:37.230Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-10] m.m.a.RequestResponseBodyMethodProcessor : Writing ["An unexpected error occurred: JWT strings must contain exactly 2 period characters. Found: 0"]
+2025-03-27T03:18:37.231Z  WARN 1406717 --- [MatchFlexdb] [http-nio-8080-exec-10] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [io.jsonwebtoken.MalformedJwtException: JWT strings must contain exactly 2 period characters. Found: 0]
+2025-03-27T03:18:37.232Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-10] o.s.web.servlet.DispatcherServlet        : Completed 500 INTERNAL_SERVER_ERROR
+2025-03-27T03:21:14.325Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : OPTIONS "/api/auth/register", parameters={}
+2025-03-27T03:21:14.326Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.matchflex.controller.AuthController#registerUser(UserRegistrationDto)
+2025-03-27T03:21:14.326Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-03-27T03:21:14.331Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : POST "/api/auth/register", parameters={}
+2025-03-27T03:21:14.331Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-2] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.matchflex.controller.AuthController#registerUser(UserRegistrationDto)
+2025-03-27T03:21:14.380Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-2] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [UserRegistrationDto(username=zak.tajer@gmail.com, email=zak.tajer@gmail.com, password=katlife1234, f (truncated)...]
+2025-03-27T03:21:14.544Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2025-03-27T03:21:14.547Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-2] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [{user=UserDTO(userId=1, username=zak.tajer@gmail.com, email=zak.tajer@gmail.com, password=null, firs (truncated)...]
+2025-03-27T03:21:14.557Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-03-27T03:21:14.575Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : GET "/api/match-groups/available", parameters={}
+2025-03-27T03:21:14.576Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-3] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.matchflex.controller.MatchGroupController#getAvailableGroups()
+2025-03-27T03:21:14.581Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2025-03-27T03:21:14.581Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-3] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2025-03-27T03:21:14.583Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-03-27T03:21:35.285Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : GET "/api/match-groups/available", parameters={}
+2025-03-27T03:21:35.285Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-4] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.matchflex.controller.MatchGroupController#getAvailableGroups()
+2025-03-27T03:21:35.288Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Using 'application/json', given [application/json, text/plain, */*] and supported [application/json, application/*+json]
+2025-03-27T03:21:35.288Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-4] o.s.w.s.m.m.a.HttpEntityMethodProcessor  : Writing [[]]
+2025-03-27T03:21:35.289Z DEBUG 1406717 --- [MatchFlexdb] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed 200 OK
+2025-03-27T03:24:26.786Z  INFO 1406717 --- [MatchFlexdb] [http-nio-8080-exec-6] o.apache.coyote.http11.Http11Processor   : Error parsing HTTP request header
+ Note: further occurrences of HTTP request parsing errors will be logged at DEBUG level.
+
+java.lang.IllegalArgumentException: Invalid character found in method name [0x000x000x000x110x000x000x000x140x000x000x000x070x00d0x00e0x00f0x00a0x00u0x00l0x00t0x000x000x00$0x00j0x00d0x00b0x00c0x00:0x00h0x0020x00:0x00t0x00c0x00p0x00:0x00/0x00/0x00l0x00o0x00c0x00a0x00l0x00h0x00o0x00s0x00t0x00:0x0080x0000x0080x0000x00/0x00d0x00e0x00f0x00a0x00u0x00l0x00t0x000x000x000x020x00S0x00A0x000x000x00 ]. HTTP method names must be tokens
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:406) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:270) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.34.jar:10.1.34]
+	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
+
+2025-03-27T03:25:50.778Z  INFO 1406717 --- [MatchFlexdb] [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-03-27T03:25:50.782Z  INFO 1406717 --- [MatchFlexdb] [Thread-5] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-03-27T03:25:50.783Z  INFO 1406717 --- [MatchFlexdb] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-03-27T03:25:50.786Z ERROR 1406717 --- [MatchFlexdb] [Thread-5] .m.i.MqttPahoMessageDrivenChannelAdapter : Exception while unsubscribing
+
+org.eclipse.paho.client.mqttv3.MqttException: Client is not connected
+	at org.eclipse.paho.client.mqttv3.internal.ExceptionHelper.createMqttException(ExceptionHelper.java:31) ~[org.eclipse.paho.client.mqttv3-1.2.5.jar:na]
+	at org.eclipse.paho.client.mqttv3.internal.ClientComms.sendNoWait(ClientComms.java:205) ~[org.eclipse.paho.client.mqttv3-1.2.5.jar:na]
+	at org.eclipse.paho.client.mqttv3.MqttAsyncClient.unsubscribe(MqttAsyncClient.java:1244) ~[org.eclipse.paho.client.mqttv3-1.2.5.jar:na]
+	at org.eclipse.paho.client.mqttv3.MqttAsyncClient.unsubscribe(MqttAsyncClient.java:1195) ~[org.eclipse.paho.client.mqttv3-1.2.5.jar:na]
+	at org.springframework.integration.mqtt.inbound.MqttPahoMessageDrivenChannelAdapter.doStop(MqttPahoMessageDrivenChannelAdapter.java:215) ~[spring-integration-mqtt-6.4.1.jar:6.4.1]
+	at org.springframework.integration.endpoint.AbstractEndpoint.doStop(AbstractEndpoint.java:211) ~[spring-integration-core-6.4.1.jar:6.4.1]
+	at org.springframework.integration.endpoint.AbstractEndpoint.stop(AbstractEndpoint.java:192) ~[spring-integration-core-6.4.1.jar:6.4.1]
+	at org.springframework.context.support.DefaultLifecycleProcessor.doStop(DefaultLifecycleProcessor.java:384) ~[spring-context-6.2.1.jar:6.2.1]
+	at org.springframework.context.support.DefaultLifecycleProcessor$LifecycleGroup.stop(DefaultLifecycleProcessor.java:526) ~[spring-context-6.2.1.jar:6.2.1]
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75) ~[na:na]
+	at org.springframework.context.support.DefaultLifecycleProcessor.stopBeans(DefaultLifecycleProcessor.java:353) ~[spring-context-6.2.1.jar:6.2.1]
+	at org.springframework.context.support.DefaultLifecycleProcessor.onClose(DefaultLifecycleProcessor.java:253) ~[spring-context-6.2.1.jar:6.2.1]
+	at org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1172) ~[spring-context-6.2.1.jar:6.2.1]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.doClose(ServletWebServerApplicationContext.java:174) ~[spring-boot-3.4.1.jar:3.4.1]
+	at org.springframework.context.support.AbstractApplicationContext.close(AbstractApplicationContext.java:1126) ~[spring-context-6.2.1.jar:6.2.1]
+	at org.springframework.boot.devtools.restart.Restarter.stop(Restarter.java:308) ~[spring-boot-devtools-3.4.1.jar:3.4.1]
+	at org.springframework.boot.devtools.restart.Restarter.lambda$restart$1(Restarter.java:250) ~[spring-boot-devtools-3.4.1.jar:3.4.1]
+	at org.springframework.boot.devtools.restart.Restarter$LeakSafeThread.run(Restarter.java:612) ~[spring-boot-devtools-3.4.1.jar:3.4.1]
+
+2025-03-27T03:26:20.790Z  INFO 1406717 --- [MatchFlexdb] [Thread-5] .m.i.MqttPahoMessageDrivenChannelAdapter : stopped bean 'inbound'; defined in: 'class path resource [com/matchflex/config/MqttConfig.class]'; from source: 'com.matchflex.config.MqttConfig.inbound()'
+2025-03-27T03:26:20.791Z  INFO 1406717 --- [MatchFlexdb] [Thread-5] o.s.i.endpoint.EventDrivenConsumer       : Removing {message-handler:handler.serviceActivator} as a subscriber to the 'mqttInputChannel' channel
+2025-03-27T03:26:20.791Z  INFO 1406717 --- [MatchFlexdb] [Thread-5] o.s.integration.channel.DirectChannel    : Channel 'MatchFlexdb.mqttInputChannel' has 0 subscriber(s).
+2025-03-27T03:26:20.791Z  INFO 1406717 --- [MatchFlexdb] [Thread-5] o.s.i.endpoint.EventDrivenConsumer       : stopped bean 'handler.serviceActivator'
+2025-03-27T03:26:20.791Z  INFO 1406717 --- [MatchFlexdb] [Thread-5] o.s.i.endpoint.EventDrivenConsumer       : Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+2025-03-27T03:26:20.791Z  INFO 1406717 --- [MatchFlexdb] [Thread-5] o.s.i.channel.PublishSubscribeChannel    : Channel 'MatchFlexdb.errorChannel' has 0 subscriber(s).
+2025-03-27T03:26:20.791Z  INFO 1406717 --- [MatchFlexdb] [Thread-5] o.s.i.endpoint.EventDrivenConsumer       : stopped bean '_org.springframework.integration.errorLogger'
+2025-03-27T03:26:20.796Z  INFO 1406717 --- [MatchFlexdb] [Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-03-27T03:26:20.806Z  WARN 1406717 --- [MatchFlexdb] [Thread-5] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-232]
+2025-03-27T03:26:20.806Z  INFO 1406717 --- [MatchFlexdb] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-03-27T03:26:20.807Z  INFO 1406717 --- [MatchFlexdb] [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

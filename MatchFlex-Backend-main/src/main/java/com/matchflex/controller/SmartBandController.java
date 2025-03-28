@@ -10,7 +10,9 @@ import com.matchflex.entity.User;
 import com.matchflex.repository.BandScanRepository;
 import com.matchflex.repository.MatchRepository;
 import com.matchflex.repository.UserRepository;
+import com.matchflex.security.JwtService;
 import com.matchflex.service.SmartBandService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,21 +22,16 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/smartbands")
+@AllArgsConstructor
 public class SmartBandController {
 
     private final SmartBandService smartBandService;
     private final JwtTokenProvider jwtTokenProvider;
     private final UserRepository userRepository;
     private final BandScanRepository bandScanRepository;
+    private final JwtService jwtService;
     private final MatchRepository matchRepository;
-     @Autowired
-    public SmartBandController(SmartBandService smartBandService, JwtTokenProvider jwtTokenProvider, UserRepository userRepository, BandScanRepository bandScanRepository, MatchRepository matchRepository) {
-        this.smartBandService = smartBandService;
-        this.jwtTokenProvider = jwtTokenProvider;
-        this.userRepository = userRepository;
-        this.bandScanRepository = bandScanRepository;
-         this.matchRepository = matchRepository;
-     }
+
 
     @PostMapping
     public ResponseEntity<SmartBandDTO> createSmartBand(@RequestBody SmartBandDTO smartBandDTO) {
@@ -44,7 +41,7 @@ public class SmartBandController {
 
     @GetMapping("/user")
     public ResponseEntity<List<BandScanDTO>> getUserScans(@RequestHeader("Authorization") String token) {
-        String email = jwtTokenProvider.extractEmail(token.substring(7));
+        String email = jwtService.extractUsername(token.substring(7));
         User user = userRepository.findByEmail(email).orElseThrow();
 
         List<BandScanDTO> scans = bandScanRepository.findByUserOrderByScanTimeDesc(user)
@@ -77,9 +74,10 @@ public class SmartBandController {
             @RequestHeader("Authorization") String token,
             @PathVariable Long groupId) {
         String bearerToken = token.substring(7);
-        String email = jwtTokenProvider.extractEmail(bearerToken);
+        String email = jwtService.extractUsername(bearerToken);
 
         SmartBand newBand = smartBandService.assignSmartBandToUser(email, groupId);
+
         SmartBandDTO dto = convertToDTO(newBand);
 
         return ResponseEntity.ok(dto);

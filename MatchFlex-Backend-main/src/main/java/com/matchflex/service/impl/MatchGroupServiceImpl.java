@@ -1,11 +1,14 @@
 package com.matchflex.service.impl;
 
+import com.matchflex.dto.BandScanDTO;
 import com.matchflex.dto.MatchGroupDTO;
 import com.matchflex.entity.MatchGroup;
 import com.matchflex.entity.User;
+import com.matchflex.repository.BandScanRepository;
 import com.matchflex.repository.MatchGroupRepository;
 import com.matchflex.repository.UserRepository;
 import com.matchflex.service.MatchGroupService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,23 +18,28 @@ import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@AllArgsConstructor
 public class MatchGroupServiceImpl implements MatchGroupService {
 
     private final MatchGroupRepository matchGroupRepository;
     private final UserRepository userRepository;
+    private final BandScanRepository bandScanRepository;
 
-    @Autowired
-    public MatchGroupServiceImpl(MatchGroupRepository matchGroupRepository, UserRepository userRepository) {
-        this.matchGroupRepository = matchGroupRepository;
-        this.userRepository = userRepository;
-    }
+
+
 
     @Override
-    public List<MatchGroupDTO> getAllGroups() {
+    public List<MatchGroupDTO> getAllGroups(String email) {
+
+
+        List<MatchGroup> userGroups  = matchGroupRepository.findByUserEmail(email);
+
         return matchGroupRepository.findAll()
                 .stream()
+                .filter(group -> !userGroups.contains(group)) // Exclude user's groups
                 .map(this::convertToDTO)
                 .collect(Collectors.toList());
+
     }
 
     @Override
@@ -47,6 +55,22 @@ public class MatchGroupServiceImpl implements MatchGroupService {
         MatchGroup group = matchGroupRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Group not found"));
         return convertToDTO(group);
+    }
+
+    @Override
+    public MatchGroupDTO createGroupe(MatchGroupDTO matchGroupDTO) {
+        if (matchGroupDTO.getName() == null || matchGroupDTO.getName().isEmpty()) {
+            throw new IllegalArgumentException("Group name is required");
+        }
+
+        MatchGroup matchGroup = new MatchGroup();
+        matchGroup.setName(matchGroupDTO.getName());
+        matchGroup.setCountries(matchGroupDTO.getCountries());
+        matchGroup.setFlags(matchGroupDTO.getFlags());
+
+        matchGroup = matchGroupRepository.save(matchGroup);
+
+        return convertToDTO(matchGroup);
     }
 
     @Override

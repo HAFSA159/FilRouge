@@ -9,6 +9,8 @@ import com.matchflex.repository.MatchGroupRepository;
 import com.matchflex.repository.SmartBandRepository;
 import com.matchflex.repository.UserRepository;
 import com.matchflex.service.SmartBandService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +22,7 @@ import java.util.stream.Collectors;
 @Transactional
 public class SmartBandServiceImpl implements SmartBandService {
 
+    private static final Logger log = LoggerFactory.getLogger(SmartBandServiceImpl.class);
     private final SmartBandRepository smartBandRepository;
     private final UserRepository userRepository;
      private final  MatchGroupRepository matchGroupRepository;
@@ -139,6 +142,7 @@ public class SmartBandServiceImpl implements SmartBandService {
         return smartBand;
     }
 
+
     @Override
     @Transactional
     public SmartBand assignSmartBandToUser(String email, Long groupId) {
@@ -163,6 +167,9 @@ public class SmartBandServiceImpl implements SmartBandService {
         // Sauvegarder le bracelet
         SmartBand savedBand = smartBandRepository.save(smartBand);
 
+         user.setSmartBand(smartBand);
+
+        userRepository.save(user);
         // Associer l'utilisateur au groupe spécifié
         associateUserWithGroup(user, groupId);
 
@@ -173,6 +180,9 @@ public class SmartBandServiceImpl implements SmartBandService {
     private void associateUserWithGroup(User user, Long groupId) {
         MatchGroup group = matchGroupRepository.findById(groupId)
                 .orElseThrow(() -> new IllegalArgumentException("Group not found with ID: " + groupId));
+
+        log.info("ededededdddddd error here");
+
 
         group.getAuthorizedUsers().add(user);
         matchGroupRepository.save(group);

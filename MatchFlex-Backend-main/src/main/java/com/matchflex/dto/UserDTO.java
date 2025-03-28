@@ -1,8 +1,15 @@
 package com.matchflex.dto;
 
+import com.matchflex.entity.Enum.Role;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDTO {
     private Long userId;
     private String username;
@@ -10,22 +17,12 @@ public class UserDTO {
     private String password;
     private String firstName;
     private String lastName;
+
     private String phoneNumber;
     private Long smartBandId;
-    private String role;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-    // Constructor for UserDTO with default values for sensitive information
-    public UserDTO(Long userId, String username, String email, String firstName, String lastName, String phoneNumber, Long smartBandId, String role) {
-        this.userId = userId;
-        this.username = username;
-        this.email = email;
-        this.password = null;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-        this.smartBandId = smartBandId;
-        this.role = role;
-    }
 
     public String getPhoneNumber() {
         return (phoneNumber != null && !phoneNumber.isEmpty()) ? phoneNumber : "+1234567890";

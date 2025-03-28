@@ -17,8 +17,7 @@ public class JwtTokenProvider {
 
     private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
-    @SuppressWarnings("unused")
-    @Value("${jwt.expiration:86400000}") // 24 heures par défaut
+    @Value("${jwt.expiration:86400000}")
     private long jwtExpiration;
 
     public String generateToken(String email) {
@@ -31,7 +30,7 @@ public class JwtTokenProvider {
                 .setClaims(claims)
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + jwtExpiration))
+                .setExpiration(new Date(System.currentTimeMillis() + 3600000))
                 .signWith(key)
                 .compact();
     }

@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { AuthService } from '../../../../core/services/auth.service';
@@ -17,13 +23,8 @@ interface RegisterForm {
   selector: 'app-register',
   templateUrl: './register.component.html',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    NgClass,
-    NgIf,
-    RouterLink
-  ],
-  styleUrls: ['./register.component.scss']
+  imports: [ReactiveFormsModule, NgClass, NgIf, RouterLink],
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup<{
@@ -47,14 +48,20 @@ export class RegisterComponent implements OnInit {
   }
 
   private initForm(): void {
-    this.registerForm = this.formBuilder.group({
-      firstName: ['', [Validators.required, Validators.minLength(2)]],
-      lastName: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.email]],
-      phone: ['', [Validators.required, Validators.pattern(/^\+?[0-9]{10,14}$/)]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      confirmPassword: ['', Validators.required]
-    }, { validators: this.passwordMatchValidator });
+    this.registerForm = this.formBuilder.group(
+      {
+        firstName: ['', [Validators.required, Validators.minLength(2)]],
+        lastName: ['', [Validators.required, Validators.minLength(2)]],
+        email: ['', [Validators.required, Validators.email]],
+        phone: [
+          '',
+          [Validators.required, Validators.pattern(/^\+?[0-9]{10,14}$/)],
+        ],
+        password: ['', [Validators.required, Validators.minLength(8)]],
+        confirmPassword: ['', Validators.required],
+      },
+      { validators: this.passwordMatchValidator }
+    );
   }
 
   passwordMatchValidator(formGroup: FormGroup) {
@@ -67,40 +74,40 @@ export class RegisterComponent implements OnInit {
     }
   }
 
- onSubmit(): void {
-   this.submitted = true;
+  onSubmit(): void {
+    this.submitted = true;
 
-   if (this.registerForm.invalid) {
-     return;
-   }
+    if (this.registerForm.invalid) {
+      return;
+    }
 
-   const userData = {
-     username: this.registerForm.value.email,
-     firstName: this.registerForm.value.firstName,
-     lastName: this.registerForm.value.lastName,
-     email: this.registerForm.value.email,
-     phoneNumber: this.registerForm.value.phone,
-     role: "CLIENT" // Par défaut, les nouveaux utilisateurs sont des clients
-   };
+    const userData = {
+      username: this.registerForm.value.email,
+      firstName: this.registerForm.value.firstName,
+      lastName: this.registerForm.value.lastName,
+      email: this.registerForm.value.email,
+      phoneNumber: this.registerForm.value.phone,
+      //  role: "CLIENT" // Par défaut, les nouveaux utilisateurs sont des clients
+    };
 
-   const password = this.registerForm.value.password || '';
+    const password = this.registerForm.value.password || '';
 
-   this.authService.register(userData, password).subscribe({
-     next: (user: any) => {
-       console.log('Registration successful', user);
+    this.authService.register(userData, password).subscribe({
+      next: (user: any) => {
+        console.log('Registration successful', user);
 
-       // Redirection basée sur le rôle
-       if (user.role === 'ADMIN') {
-         this.router.navigate(['/dashboard']);
-       } else {
-         this.router.navigate(['/all-groups']);
-       }
-     },
-     error: (error: Error) => {
-       console.error('Registration failed', error);
-     }
-   });
- }
+        // Redirection basée sur le rôle
+        if (user.role === 'ADMIN') {
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.router.navigate(['/all-groups']);
+        }
+      },
+      error: (error: Error) => {
+        console.error('Registration failed', error);
+      },
+    });
+  }
 
   // Convenience getter for easy access to form fields
   get f() {

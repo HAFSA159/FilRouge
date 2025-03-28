@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import {CommonModule, NgForOf} from '@angular/common';
+import { StepperDataService } from '../../../../core/services/stepper-data.service';
 
 interface ColorOption {
   name: string;
@@ -29,7 +30,7 @@ export class ColorBandChoiceComponent implements OnInit{
     { name: 'Purple', class: 'bg-purple-500', ringClass: 'ring-purple-300' },
   ];
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(private route: ActivatedRoute, private router: Router, private sharedDataService: StepperDataService) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -48,6 +49,8 @@ export class ColorBandChoiceComponent implements OnInit{
     } else {
       alert('Please select a color before proceeding.');
     }
+
+    this.sharedDataService.updateData({color: this.selectedColor})
   }
 
   goToPreviousStep(): void {

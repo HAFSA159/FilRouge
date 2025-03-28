@@ -1,30 +1,43 @@
 package com.matchflex.service.impl;
 
+import com.matchflex.config.ApplicationConfig;
+import com.matchflex.dto.LoginDTO;
+import com.matchflex.dto.LoginResponseDto;
 import com.matchflex.dto.UserDTO;
 import com.matchflex.dto.UserRegistrationDto;
+import com.matchflex.entity.Enum.Role;
 import com.matchflex.entity.User;
 import com.matchflex.repository.UserRepository;
+import com.matchflex.security.JwtService;
 import com.matchflex.service.UserService;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 @Transactional
+@AllArgsConstructor
+@Slf4j
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final ApplicationConfig applicationConfig;
+    private final JwtService jwtService;
+    private final AuthenticationManager authenticationManager;
 
-    @Autowired
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
+
 
     @Override
     public UserDTO createUser(UserDTO userDTO) {
@@ -35,6 +48,7 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("Phone number is already in use");
         }
         User user = convertToEntity(userDTO);
+//        user.setRole(Role.CLIENT);
         User savedUser = userRepository.save(user);
         return convertToDTO(savedUser);
     }
@@ -47,7 +61,7 @@ public class UserServiceImpl implements UserService {
     }
     public String getUserRoleById(Long id) {
         UserDTO user = getUserById(id);
-        return user != null ? user.getRole() : null;
+        return user != null ? user.getRole().toString() : null;
     }
 
 
@@ -113,7 +127,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDTO registerUser(UserRegistrationDto registrationDto) {
+    public UserDTO registerUser(UserDTO registrationDto) {
         if (isEmailTaken(registrationDto.getEmail())) {
             throw new IllegalArgumentException("Email is already in use");
         }
@@ -121,32 +135,58 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("Phone number is already in use");
         }
 
-        User user = new User();
-        // Utilisez l'email comme nom d'utilisateur par défaut si non fourni
-        user.setUsername(registrationDto.getUsername() != null ?
-                registrationDto.getUsername() : registrationDto.getEmail());
-        user.setEmail(registrationDto.getEmail());
-        user.setPassword(passwordEncoder.encode(registrationDto.getPassword()));
-        user.setFirstName(registrationDto.getFirstName());
-        user.setLastName(registrationDto.getLastName());
-        user.setPhoneNumber(registrationDto.getPhoneNumber());
-        user.setRole(registrationDto.getRole() != null ? registrationDto.getRole() : "CLIENT");
+        registrationDto.setPassword(applicationConfig.passwordEncoder().encode(registrationDto.getPassword()));
+        registrationDto.setRole(Role.CLIENT);
 
-        User savedUser = userRepository.save(user);
+        User userMapped = User.fromDTO(registrationDto);
+
+
+        User savedUser = userRepository.save(userMapped);
         return convertToDTO(savedUser);
     }
 
+    public LoginResponseDto Login(LoginDTO login) {
+        Optional<User> user = userRepository.findByEmail(login.getEmail());
+
+
+        if (user.isEmpty()) {
+            throw new IllegalArgumentException("User not found with email: "+ login.getEmail());
+        }
+        if (!applicationConfig.passwordEncoder().matches(login.getPassword(), user.get().getPassword())) {
+            throw new IllegalArgumentException("Passwords do not match");
+
+        }
+        try {
+            Authentication authentication = authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(login.getEmail(), login.getPassword())
+            );
+
+            User authenticatedUser = (User) authentication.getPrincipal();
+
+            log.info("Authenticated user: {}", authenticatedUser);
+            String jwtToken = jwtService.generateToken(authenticatedUser);
+
+            return new LoginResponseDto(jwtToken, "Success", user.get(), user.get().getRole());
+
+        } catch (BadCredentialsException ex) {
+
+
+            throw new IllegalArgumentException("Invalid email or password");
+        }
+
+    }
+
     private UserDTO convertToDTO(User user) {
-        return new UserDTO(
-                user.getUserId(),
-                user.getUsername(),
-                user.getEmail(),
-                user.getFirstName(),
-                user.getLastName(),
-                user.getPhoneNumber(),
-                user.getSmartBand() != null ? user.getSmartBand().getBandId() : null,
-                user.getRole()
-        );
+        UserDTO userDTO = new UserDTO();
+        userDTO.setUsername(user.getUsername());
+        userDTO.setEmail(user.getEmail());
+        userDTO.setFirstName(user.getFirstName());
+        userDTO.setLastName(user.getLastName());
+        userDTO.setRole(user.getRole());
+        userDTO.setPhoneNumber(user.getPhoneNumber());
+        userDTO.setSmartBandId(user.getSmartBand() != null ? user.getSmartBand().getBandId() : null);
+
+        return userDTO;
     }
 
     private User convertToEntity(UserDTO dto) {

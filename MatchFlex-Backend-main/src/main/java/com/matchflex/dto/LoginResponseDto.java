@@ -1,23 +1,26 @@
 package com.matchflex.dto;
 
+
 import com.matchflex.entity.Enum.Role;
+import com.matchflex.entity.User;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
-import lombok.Data;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Data
+
 @Getter
 @Setter
-public class UserRegistrationDto {
-    private String username;
-    private String email;
-    private String password;
-    private String firstName;
-    private String lastName;
-    private String phoneNumber;
+@AllArgsConstructor
+public class LoginResponseDto {
+
+
+
+    private String token;
+    private String message;
+    private User user;
     @Enumerated(EnumType.STRING)
     private Role role;
-
 }

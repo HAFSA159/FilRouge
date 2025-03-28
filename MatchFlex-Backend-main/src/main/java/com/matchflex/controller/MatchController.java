@@ -13,6 +13,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/matches")
+@CrossOrigin(origins = "http://localhost:4200")
+
 public class MatchController {
 
     private final MatchService matchService;
@@ -22,7 +24,7 @@ public class MatchController {
         this.matchService = matchService;
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<MatchDTO> createMatch(@RequestBody MatchDTO matchDTO) {
         MatchDTO createdMatch = matchService.createMatch(matchDTO);
         return new ResponseEntity<>(createdMatch, HttpStatus.CREATED);

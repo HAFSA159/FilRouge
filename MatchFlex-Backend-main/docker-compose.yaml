@@ -1,0 +1,15 @@
+services:
+  match-db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: titan
+      POSTGRES_DB: matchflexdb
+    ports:
+      - "5434:5432"
+    volumes:
+      - match-db:/var/lib/postgresql/data
+
+volumes:
+  match-db:

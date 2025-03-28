@@ -1,12 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, AbstractControl, ValidatorFn } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+  AbstractControl,
+  ValidatorFn,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import {
+  Stepper,
+  StepperDataService,
+} from '../../../../core/services/stepper-data.service';
 
 @Component({
   templateUrl: './user-info.component.html',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule]
+  imports: [CommonModule, ReactiveFormsModule],
 })
 export class UserInfoComponent implements OnInit {
   userForm!: FormGroup;
@@ -17,7 +28,8 @@ export class UserInfoComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
+    private sharedDataService: StepperDataService
   ) {}
 
   ngOnInit(): void {
@@ -30,21 +42,18 @@ export class UserInfoComponent implements OnInit {
       lastName: ['', [Validators.required]],
       shippingAddress: ['', [Validators.required]],
       city: ['', [Validators.required]],
-      email: ['', [
-        Validators.required,
-        Validators.pattern(this.emailPattern)
-      ]],
-      phoneNumber: ['', [
-        Validators.required,
-        Validators.pattern(this.phonePattern)
-      ]]
+      email: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
+      phoneNumber: [
+        '',
+        [Validators.required, Validators.pattern(this.phonePattern)],
+      ],
     });
   }
 
   emailValidator(): ValidatorFn {
-    return (control: AbstractControl): {[key: string]: any} | null => {
+    return (control: AbstractControl): { [key: string]: any } | null => {
       const valid = this.emailPattern.test(control.value);
-      return valid ? null : { 'invalidEmail': { value: control.value } };
+      return valid ? null : { invalidEmail: { value: control.value } };
     };
   }
 
@@ -59,10 +68,24 @@ export class UserInfoComponent implements OnInit {
     } else {
       this.markFormGroupTouched(this.userForm);
     }
+    console.log(this.userForm.value);
+
+    let data = this.userForm.value;
+    let formData = {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      shippingAddress: data.shippingAddress,
+      city: data.city,
+      email: data.email,
+      phoneNumber: data.phoneNumber,
+    };
+
+
+    this.sharedDataService.updateData({ userInformations: formData });
   }
 
   markFormGroupTouched(formGroup: FormGroup): void {
-    Object.values(formGroup.controls).forEach(control => {
+    Object.values(formGroup.controls).forEach((control) => {
       control.markAsTouched();
 
       if (control instanceof FormGroup) {

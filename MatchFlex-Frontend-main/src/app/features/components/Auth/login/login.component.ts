@@ -1,21 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AuthService } from '../../../../core/services/auth.service'; // Ajoutez cet import
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    NgClass,
-    NgIf,
-    RouterLink
-  ],
-  styleUrls: ['./login.component.scss']
+  imports: [ReactiveFormsModule, NgClass, NgIf, RouterLink],
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup<{
@@ -37,7 +39,7 @@ export class LoginComponent implements OnInit {
   private initForm(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]]
+      password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
@@ -53,18 +55,18 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(email, password).subscribe({
       next: (user: any) => {
-        console.log('Login successful');
+        console.log('Login successful', user);
 
         // Redirection basée sur le rôle de l'utilisateur
         if (user.role === 'ADMIN') {
           this.router.navigate(['/dashboard']);
         } else {
-          this.router.navigate(['/home']);
+          this.router.navigate(['/my-matches']);
         }
       },
       error: (error: Error) => {
         console.error('Login failed', error);
-      }
+      },
     });
   }
 
